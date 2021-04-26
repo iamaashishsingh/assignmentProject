@@ -7,11 +7,11 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 function Dashboard() {
   const [selectCheck,setSelectCheck] = useState(false);
-  const [selectdisable,setSelectdisable] = useState(false);
   const [buttonStatus, setButtonStaus] = useState(true);
   const [category, setCategory] = useState([]);
   const myOptions = data.Categories;
   const onSelectCategory = (e, val) => {
+
     let value = val;
     if (value) {
       if (category.indexOf(val) < 0) {
@@ -22,14 +22,6 @@ function Dashboard() {
     console.log(category);
   }
 
-  const disable = (e) => {
-   if (selectdisable){
-    setSelectdisable(false); 
-   }
-   else{
-    setSelectdisable(true); 
-   }
-  }
 
   const remove = (e) => {
     alert("are you sure want to delete");
@@ -45,7 +37,6 @@ function Dashboard() {
     alert("are you sure want to delete");
     setCategory(category => []);
     setButtonStaus(true);
-    
   }
 
   const selectAll = (e) =>{
@@ -96,7 +87,7 @@ function Dashboard() {
                     <tr key={value}>
                       <td> 
                         <Form.Group controlId={'formBasicCheckbox' + ind}>
-                          <Form.Check type="checkbox"   value={value} checked={selectCheck} disabled={selectdisable} />
+                          <Form.Check type="checkbox"   value={value} checked={selectCheck}  />
                         </Form.Group>
                       </td>
                       <td colSpan="2">{value}</td>
@@ -105,9 +96,7 @@ function Dashboard() {
                       </td>
                     </tr>
                   ))
-                  
                   :<tr> <td colSpan="6"> No list Items Added</td> </tr>
-
               }
             </tbody>
           </Table>
